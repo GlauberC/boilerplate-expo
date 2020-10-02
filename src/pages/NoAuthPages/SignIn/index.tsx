@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
+import { TextInput } from 'react-native';
 import Background from '../../../components/Background';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-import { TextInput } from 'react-native';
 import { useAuth } from '../../../providers/auth.provider';
 
 import * as S from './styles';
