@@ -1,12 +1,13 @@
-import React, { useRef, useImperativeHandle, forwardRef } from "react";
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 
-import { colors } from "../../styles/mainStyles";
+import { colors } from '../../styles/mainStyles';
 
-import { TextInputProps } from "react-native";
+import { TextInputProps } from 'react-native';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 interface InputProps extends TextInputProps {
+  label: string;
   errMsg: string;
 }
 
@@ -15,8 +16,8 @@ interface InputRef {
 }
 
 const Input: React.RefForwardingComponent<InputRef, InputProps> = (
-  { errMsg, value, ...rest },
-  ref
+  { errMsg, value, label, ...rest },
+  ref,
 ) => {
   const inputElementRef = useRef<any>(null);
   useImperativeHandle(ref, () => ({
@@ -27,6 +28,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
 
   return (
     <>
+      <S.Label>{label}</S.Label>
       <S.Container isErr={errMsg.length > 0}>
         <S.TextInputBox
           {...rest}
@@ -35,7 +37,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
           ref={inputElementRef}
         />
       </S.Container>
-      {errMsg !== "" && <S.ErrInfo>{errMsg}</S.ErrInfo>}
+      {errMsg !== '' && <S.ErrInfo>{errMsg}</S.ErrInfo>}
     </>
   );
 };

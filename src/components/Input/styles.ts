@@ -1,31 +1,34 @@
-import styled from "styled-components/native";
-import { colors } from "../../styles/mainStyles";
+import styled from 'styled-components/native';
+import { colors, fontSizes, spacing } from '../../styles/mainStyles';
 
 interface IContainer {
   isErr: boolean;
 }
 
+export const Label = styled.Text`
+  margin-top: ${spacing.m};
+  padding: 0 ${spacing.s};
+  font-weight: bold;
+  font-size: ${fontSizes.m};
+`;
 export const Container = styled.View`
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 5px;
   border-color: ${({ isErr }: IContainer) =>
     isErr ? colors.error : colors.prim1};
   align-items: center;
   flex-direction: row;
-  padding: 5px 10px;
-  margin-top: 20px;
-  margin: 20px 10px 0 10px;
+  padding: ${spacing.xs} ${spacing.s};
+  margin: ${spacing.s} ${spacing.s} 0 ${spacing.s};
 `;
 export const TextInputBox = styled.TextInput`
-  flex: 1;
-  margin-left: 5px;
-  font-size: 16px;
+  font-size: ${fontSizes.m};
   color: ${colors.text1};
 `;
 
 export const ErrInfo = styled.Text`
-  margin-top: 5px;
+  margin-top: ${fontSizes.xs};
   color: ${colors.error};
-  font-size: 12px;
-  margin-left: 10px;
+  font-size: ${fontSizes.s};
+  margin-left: ${fontSizes.s};
 `;

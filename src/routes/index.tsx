@@ -1,14 +1,14 @@
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import NoAuthRoutes from "./NoAuthRoutes";
-
-const Tab = createBottomTabNavigator();
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthRoutes from './AuthRoutes';
+import NoAuthRoutes from './NoAuthRoutes';
+import { useAuth } from '../providers/auth.provider';
 
 function Routes() {
+  const { user } = useAuth();
   return (
     <NavigationContainer>
-      <NoAuthRoutes />
+      {user ? <AuthRoutes /> : <NoAuthRoutes />}
     </NavigationContainer>
   );
 }
