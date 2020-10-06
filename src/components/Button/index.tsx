@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { TouchableOpacityProps, ActivityIndicator } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../../styles/mainStyles';
-import * as S from './styles';
+import * as Styled from './styles';
 
 interface IButton extends TouchableOpacityProps {
   children: ReactNode;
@@ -10,24 +10,24 @@ interface IButton extends TouchableOpacityProps {
   iconName: string;
 }
 
-const Button: React.FC<IButton> = ({
+const CustomButton: React.FC<IButton> = ({
   children,
   loading,
   iconName,
   ...rest
 }) => {
   return (
-    <S.Container {...rest} activeOpacity={0.8}>
-      {loading ? (
-        <ActivityIndicator color={colors.text1} />
-      ) : (
-        <S.ButtonContent>
-          <MaterialIcons name={iconName} size={26} color={colors.text2} />
-          <S.Label>{children}</S.Label>
-        </S.ButtonContent>
+    <Styled.Container
+      mode="contained"
+      icon={() => (
+        <MaterialIcons name={iconName} size={26} color={colors.text2} />
       )}
-    </S.Container>
+      loading={loading}
+      {...rest}
+    >
+      {children}
+    </Styled.Container>
   );
 };
 
-export default Button;
+export default CustomButton;

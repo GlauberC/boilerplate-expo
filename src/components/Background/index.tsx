@@ -1,5 +1,5 @@
-import React from "react";
-import * as S from "./styles";
+import React from 'react';
+import * as Styled from './styles';
 
 interface IBackgroundProps {
   scrollable?: boolean;
@@ -8,9 +8,9 @@ interface IBackgroundProps {
 const Background: React.FC<IBackgroundProps> = ({ scrollable, children }) => (
   <>
     {scrollable ? (
-      <S.Container>{children}</S.Container>
+      <Styled.Container>{children}</Styled.Container>
     ) : (
-      <S.ContainerScroll>{children}</S.ContainerScroll>
+      <Styled.ContainerScroll>{children}</Styled.ContainerScroll>
     )}
   </>
 );

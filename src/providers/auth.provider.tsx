@@ -24,6 +24,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUserData | null>(null);
 
   const signIn = useCallback(async (data: ISignInCredentials) => {
+    // setLoading(true);
     setUser(data);
   }, []);
 
